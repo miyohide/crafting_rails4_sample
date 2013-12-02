@@ -3,6 +3,8 @@ module MailForm
       include ActiveModel::AttributeMethods
       attribute_method_prefix 'clear_'
 
+      attribute_method_suffix '?'
+
       def self.attributes(*names)
          attr_accessor(*names)
 
@@ -12,6 +14,10 @@ module MailForm
       protected
       def clear_attribute(attribute)
          send("#{attribute}=", nil)
+      end
+
+      def attribute?(attribute)
+         send(attribute).present?
       end
    end
 end

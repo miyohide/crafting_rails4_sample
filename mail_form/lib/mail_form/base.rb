@@ -1,5 +1,6 @@
 module MailForm
    class Base
+      include ActiveModel::Conversion
       include ActiveModel::AttributeMethods
       attribute_method_prefix 'clear_'
 
@@ -9,6 +10,10 @@ module MailForm
          attr_accessor(*names)
 
          define_attribute_methods(names)
+      end
+
+      def to_model
+         self
       end
 
       protected

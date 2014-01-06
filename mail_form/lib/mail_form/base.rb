@@ -4,6 +4,7 @@ module MailForm
       include ActiveModel::AttributeMethods
       extend ActiveModel::Naming
       extend ActiveModel::Translation
+      include ActiveModel::Validations
 
       attribute_method_prefix 'clear_'
 

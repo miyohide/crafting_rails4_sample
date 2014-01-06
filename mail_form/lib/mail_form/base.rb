@@ -20,6 +20,10 @@ module MailForm
          self
       end
 
+      def persisted?
+         false
+      end
+
       protected
       def clear_attribute(attribute)
          send("#{attribute}=", nil)

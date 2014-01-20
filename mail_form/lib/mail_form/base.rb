@@ -10,6 +10,9 @@ module MailForm
 
       attribute_method_suffix '?'
 
+      class_attribute :attribute_names
+      self.attribute_names = []
+
       def self.attributes(*names)
          attr_accessor(*names)
 
@@ -30,6 +33,13 @@ module MailForm
          else
             false
          end
+      end
+
+      def self.attributes(*names)
+         attr_accessor(*names)
+         define_attribute_methods(names)
+
+         self.attribute_names += names
       end
 
       protected

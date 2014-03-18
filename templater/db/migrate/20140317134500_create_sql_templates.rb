@@ -6,7 +6,7 @@ class CreateSqlTemplates < ActiveRecord::Migration
       t.string :format
       t.string :locale
       t.string :handler
-      t.boolean :partial
+      t.boolean :partial, default: false
 
       t.timestamps
     end

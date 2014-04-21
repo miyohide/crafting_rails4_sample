@@ -15,10 +15,10 @@ class SqlTemplateTest < ActiveSupport::TestCase
          handler: "erb",
          partial: false)
 
-      template = resolver.find_all("index"< "posts", false, details).first
+      template = resolver.find_all("index", "posts", false, details).first
       assert_kind_of ActionView::Template, template
 
-      assert_equal "<%= 'Hi from SqlTemplate!' $>", template.source
+      assert_equal "<%= 'Hi from SqlTemplate!' %>", template.source
       assert_kind_of ActionView::Template::Handlers::ERB, template.handler
       assert_equal [:html], template.formats
       assert_equal "posts/index", template.virtual_path

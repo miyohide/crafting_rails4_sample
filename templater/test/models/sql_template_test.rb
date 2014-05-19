@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SqlTemplateTest < ActiveSupport::TestCase
    test "resolver returns a template with the saved body" do
-      resolver = SqlTemplate::Resolver.new
+      resolver = SqlTemplate::Resolver.instance
       details = { formats: [:html], locale: [:en], handlers: [:erb] }
 
       assert resolver.find_all("index", "posts", false, details).empty?

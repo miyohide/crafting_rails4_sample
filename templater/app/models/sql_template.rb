@@ -7,6 +7,10 @@ class SqlTemplate < ActiveRecord::Base
    validates :locale, inclusion: I18n.available_locales.map(&:to_s)
    validates :handler, inclusion: ActionView::Template::Handlers.extensions.map(&:to_s)
 
+   after_save do
+      SqlTemplate::Resolver.instance.clear_cache
+   end
+
    class Resolver < ActionView::Resolver
       include Singleton
       protected

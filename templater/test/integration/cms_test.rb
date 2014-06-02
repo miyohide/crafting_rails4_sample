@@ -5,7 +5,7 @@ class CmsTest < ActiveSupport::IntegrationCase
       visit "/sql_templates"
       click_link "New Sql template"
 
-      fill_in "Body",     with: "Myfirst CMS template"
+      fill_in "Body",     with: "My first CMS template"
       fill_in "Path",     with: "about"
       fill_in "Format",   with: "html"
       fill_in "Locale",   with: "en"

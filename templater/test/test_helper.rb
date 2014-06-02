@@ -15,3 +15,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActiveSupport::IntegrationCase < ActiveSupport::TestCase
+   include Capybara::DSL
+   include Rails.application.routes.url_helpers
+end
+

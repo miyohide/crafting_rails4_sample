@@ -41,5 +41,19 @@ class LiveAssetsTest < ActiveSupport::TestCase
          LiveAssets.unsubscribe(subscriber)
       end
    end
+
+   test "receives timer notifications" do
+      l = LiveAssets.start_timer(:ping, 0.5)
+
+      subscriber = []
+      LiveAssets.subscribe(subscriber)
+
+      begin
+         true while subscriber.empty?
+         assert_includes subscriber, :ping
+      ensure
+         LiveAssets.unsubscribe(subscriber)
+      end
+   end
 end
 

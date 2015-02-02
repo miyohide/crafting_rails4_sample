@@ -9,7 +9,7 @@ class FlashTest < ActionController::TestCase
   end
 
   test "sets notice message on successful update" do
-    usesr = User.create!(name: "John Doe")
+    user = User.create!(name: "John Doe")
     put :update, id: user.id, user: { name: "Another John Doe" }
     assert_equal "User was successfully updated.", flash[:notice]
   end

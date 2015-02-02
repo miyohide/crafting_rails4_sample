@@ -1,18 +1,22 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   def index
     @users = User.all
+    respond_with(@users)
   end
 
   # GET /users/1
   def show
+    respond_with(@user)
   end
 
   # GET /users/new
   def new
     @user = User.new
+    respond_with(@user)
   end
 
   # GET /users/1/edit
@@ -22,27 +26,20 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
-    if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
-    else
-      render action: 'new'
-    end
+    @user.save
+    respond_with(@user)
   end
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
-    else
-      render action: 'edit'
-    end
+    @user.update(user_params)
+    respond_with(@user)
   end
 
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    respond_with(@user)
   end
 
   private

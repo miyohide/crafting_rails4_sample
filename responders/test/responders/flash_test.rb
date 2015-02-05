@@ -19,5 +19,18 @@ class FlashTest < ActionController::TestCase
     delete :destroy, id: user.id
     assert_equal "User was successfully destroyed.", flash[:notice]
   end
+
+  test "sets alert messages from the controller scope" do
+    begin
+      I18n.backend.store_translations :en,
+        flash: { users: { destroy: { alert: "Cannot destroy!" } } }
+
+      user = User.create!(name: "Undestroyable")
+      delete :destroy, id: user.id
+      assert_equal "Cannot destroy!", flash[:alert]
+    ensure
+      I18n.reload!
+    end
+  end
 end
 

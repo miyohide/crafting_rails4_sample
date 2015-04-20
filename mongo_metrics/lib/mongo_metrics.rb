@@ -1,3 +1,4 @@
+require "mongoid"
 require "mongo_metrics/engine"
 
 module MongoMetrics

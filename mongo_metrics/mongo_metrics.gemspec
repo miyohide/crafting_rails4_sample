@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.12"
   s.add_dependency "mongoid", "~> 4.0.0"
+  s.add_dependency "jquery-rails", "~> 3.0.1"
 
   s.add_development_dependency "sqlite3"
 end

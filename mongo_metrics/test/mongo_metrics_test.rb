@@ -33,4 +33,13 @@ class MongoMetricsTest < ActiveSupport::TestCase
     assert !MongoMetrics.mute?
     assert_equal 0, MongoMetrics::Metric.count
   end
+
+  test "does not leak mute state on failures" do
+    MongoMetrics.mute! do
+      assert MongoMetrics.mute?
+      raise "oops"
+    end rescue nil
+
+    assert !MongoMetrics.mute?
+  end
 end

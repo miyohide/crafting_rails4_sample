@@ -1,4 +1,6 @@
 module Translator
+  autoload :App, "translator/app"
+
   DATABASES = {
     "development" => 0,
     "test"        => 1,

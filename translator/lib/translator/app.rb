@@ -35,22 +35,22 @@ __END__
     %title
       Translator::App
     %body
-      %h2 = "From #{@from} to #{@to}"
+      %h2= "From #{@from} to #{@to}"
       %p(style="color:green")= @message
 
       - if @keys.empty?
-          No translations available for #{@from}
+        No translations available for #{@from}
       - else
-          %form(method="post" action="")
-            - @keys.each do |key|
-              - from_value = locale_value(@from, key)
-              - next unless from_value
-              - to_value = locale_value(@to, key) || from_value
-              %p
-                %label(for=key)
-                  %small= key
-                  = from_value
-                %br
-                %input(id=key name=key type="text" value=to_value size="120")
-              %p
-                %input(type="submit" value="Store translations")
+        %form(method="post" action="")
+          - @keys.each do |key|
+            - from_value = locale_value(@from, key)
+            - next unless from_value
+            - to_value = locale_value(@to, key) || from_value
+            %p
+              %label(for=key)
+                %small= key
+                = from_value
+              %br
+              %input(id=key name=key type="text" value=to_value size="120")
+            %p
+              %input(type="submit" value="Store translations")

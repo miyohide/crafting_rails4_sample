@@ -1,4 +1,5 @@
 Translator::Application.routes.draw do
+  devise_for :admins
   mount Translator::App, at: "/translator"
 
   root to: "home#index"

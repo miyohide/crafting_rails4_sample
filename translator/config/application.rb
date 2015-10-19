@@ -23,3 +23,5 @@ module Translator
     config.i18n.backend = Translator::Backend.new
   end
 end
+
+I18n.enforce_available_locales = false
